@@ -35,15 +35,18 @@ class ViewController: UIViewController {
     func addNameToDeliLine(name:String) ->String {
         if name == "Billy Crystal"{
             deliLine.insert("Billy Crystal", atIndex:0)
-            return "Welcome Billy Crystal! You can sit wherever you like."
+            return "Welcome Billy! You can sit wherever you like."
         }   else if name == "Meg Ryan"{
             deliLine.insert("Meg Ryan", atIndex:0)
-            return "Welcome Meg Ryan! You can sit wherever you like."
-        }    else if name != "Billy Crystal" || name != "Meg Ryan" {
-            deliLine.append("\(name)")
-            return "Welcome \(name), you're number \(deliLine.count) in line."
+            return "Welcome Meg! You can sit wherever you like."
             
-        }   else { firstPerson(name)
+        }    else if deliLine.count == 0 {
+                deliLine.append(name)
+                return "Welcome \(name), you're first in line!"
+        }   else {
+                deliLine.append("\(name)")
+                return "Welcome \(name), you're number \(deliLine.count) in line."
+           
             
         }
         return ""
@@ -53,24 +56,27 @@ class ViewController: UIViewController {
     func nowServing()->String {
         
         if deliLine.count == 0 {
-            print("There is no one to be served.")
-        }else{
+           return "There is no one to be served."
+       }else{
             
-            for (index, _) in deliLine.enumerate(){
-                print("Now serving: \(index + 1)")
-                deliLine.removeAtIndex(0)
-            }
+            let firstPerson = "Now serving \(deliLine[0])!"
+            deliLine.removeFirst()
+            
+            return firstPerson
+            
+            
+    
         }
-        return ""
+            return ""
         
     }
     func deliLineDescription()->String{
-        var newLine = "The line is:\n"
+        var newLine = "The line is:"
         if deliLine.count == 0{
-            print("The line is currently empty.")
+            return "The line is currently empty."
         }else{
             for (index, names) in deliLine.enumerate(){
-                newLine.appendContentsOf("\(index + 1). \(names)")
+                newLine.appendContentsOf("\n\(index + 1). \(names)")
             }
             
         }

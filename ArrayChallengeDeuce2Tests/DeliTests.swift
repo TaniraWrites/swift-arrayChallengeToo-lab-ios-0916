@@ -21,9 +21,11 @@ class DeliSpec: QuickSpec {
         
         describe("addNameToDeliLine(_:)") {
             it("Should add the provided name to the deliLine property on the ViewController and return back the appropriate greeting. The count of the line should reflect the newly added name.") {
+                testVC.deliLine.removeAll()
                 
                 let actualGreeting = testVC.addNameToDeliLine("Jon Snow")
                 let actualCountOfLine = testVC.deliLine.count
+                
                 
                 let expectedGreeting = "Welcome Jon Snow, you're first in line!"
                 let expectedCountOfLine = 1
