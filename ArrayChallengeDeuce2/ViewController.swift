@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     
     
-    func addNameTODeliLine(name:String) ->String {
+    func addNameToDeliLine(name:String) ->String {
         if name == "Billy Crystal"{
             deliLine.insert("Billy Crystal", atIndex:0)
             return "Welcome Billy Crystal! You can sit wherever you like."
